@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background-color: #42413C;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color: #FFFFFF;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #33FFFF;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~this fixed width container surrounds the other divs~~ */
+.container {
+	width: 1400px;
+	background-color: #FFF; /* the auto value on the sides, coupled with the width, centers the layout */
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	color: #000;
+	border-top-color: #00C;
+	border-right-color: #00C;
+	border-bottom-color: #00C;
+	border-left-color: #00C;
+	text-align: left;
+	font-family: "Alter Regular";
+	font-size: 16pt;
+	letter-spacing: 1px;
+}
+
+/* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
+.header {
+	background-color: #000000;
+	background-repeat: no-repeat;
+	height: 200px;
+	width: 1400px;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+}
+
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the divs. The elements within these divs have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a div set to float right). Many times, padding can be used instead. For divs where this rule must be broken, you should add a "display:inline" declaration to the div's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar divs could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the right instead of the left, simply float these columns the opposite direction (all right instead of all left) and they'll render in reverse order. There's no need to move the divs around in the HTML source.
+
+*/
+.navbar {
+	overflow: hidden;
+	background-color: #333333;
+	font-family: "Alter Regular";
+	background-image: url(Navigation%20panel%20background.jpg);
+	background-repeat: repeat-x;
+}
+
+.navbar a {
+	float: right;
+	font-size: 16pt;
+	color: #FFF;
+	text-align: center;
+	text-decoration: none;
+	padding-top: 12px;
+	padding-right: 16px;
+	padding-bottom: 14px;
+	padding-left: 16px;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+	font-size: 16pt;
+	border: none;
+	outline: none;
+	color: white;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+	padding-top: 14px;
+	padding-right: 20px;
+	padding-bottom: 14px;
+	padding-left: 18px;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+	background-color: #000;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #000000;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	min-height: 118px;
+}
+
+.dropdown-content a {
+	float: none;
+	color: #FFF;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+	padding-top: 12px;
+	padding-right: 15px;
+	padding-bottom: 12px;
+	padding-left: 18px;
+}
+
+.dropdown-content a:hover {
+	background-color: #333;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.sidebar1 {
+	float: left;
+	width: 180px;
+	background-color: #003366;
+	padding-bottom: 10px;
+	color: #FFF;
+	text-align: center;
+}
+.content {
+	width: 1220px;
+	float: left;
+	padding-top: 10px;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 0;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	border-top: 1px solid #666; /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin-bottom: 15px; /* this creates the space between the navigation on the content below */
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* this creates the button separation */
+}
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	padding: 5px 5px 5px 15px;
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	width: 160px;  /*this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
+	text-decoration: none;
+	background-color: #000000;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+	background-color: #333333;
+	color: #FC0;
+}
+
+/* ~~ The footer ~~ */
+.footer {
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+	background-image: none;
+	background-repeat: no-repeat;
+	border-top-color: #00C;
+	border-right-color: #000;
+	border-bottom-color: #000099;
+	border-left-color: #000;
+	font-size: 90%;
+	color: #FFF;
+	background-color: #000;
+	text-align: left;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 0;
+	padding-top: 10px;
+}
+#CateIndicator {
+	background-color: #FFF;
+	background-image: url(Divider%20New%203DS%20XL%20Accessories.png);
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 60px;
+	width: 1200px;
+	font-size: 25px;
+	font-weight: bold;
+	border-top-color: #FFF;
+	border-bottom-color: #FFF;
+	margin-left: 10px;
+	color: #000;
+}
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+a:hover {
+	color: #FFCC00;
+}
+-->
+</style>
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+    <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1400" height="200">
+      <param name="movie" value="Client's shop name Flash.swf" />
+      <param name="quality" value="high" />
+      <param name="wmode" value="opaque" />
+      <param name="swfversion" value="15.0.0.0" />
+      <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
+      <param name="expressinstall" value="Scripts/expressInstall.swf" />
+      <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+      <!--[if !IE]>-->
+      <object type="application/x-shockwave-flash" data="Client's shop name Flash.swf" width="1400" height="200">
+        <!--<![endif]-->
+        <param name="quality" value="high" />
+        <param name="wmode" value="opaque" />
+        <param name="swfversion" value="15.0.0.0" />
+        <param name="expressinstall" value="Scripts/expressInstall.swf" />
+        <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+        <div>
+          <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+          <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+        </div>
+        <!--[if !IE]>-->
+      </object>
+      <!--<![endif]-->
+    </object>
+  <!-- end .header --></div>
+  <div class="navbar">
+  <a href="index.html"><img src="Home Button.png" width="35" height="30" /></a>
+  <div class="dropdown">
+    <button class="dropbtn">Pre-Order
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="Pre-Order Page 1.html">Show All</a>
+      <a href="Pre-Order PS4 Page.html">PS4</a>
+      <a href="Pre-Order Xbox One Page.html">Xbox ONE</a>
+      <a href="Pre-Order Switch Page.html">Switch</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn">Accessories
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="Accessories Page.html">Show All</a>
+      <a href="Accessories PS3 Page.html">PS3</a>
+      <a href="Accessories PS4 Page.html">PS4</a>
+      <a href="Accessories PSVita Page.html">PSVita</a>
+      <a href="Accessories Xbox 360 Page.html">Xbox 360</a>
+      <a href="Accessories Xbox ONE Page.html">Xbox ONE</a>
+      <a href="Accessories Nintendo New 3DSXL Page.html">New 3DSXL</a>
+      <a href="Accessories Nintendo Switch Page.html">Switch</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn">Games
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="Games Page.html">Show All</a>
+      <a href="Games PS3 Page.html">PS3</a>
+      <a href="Games PS4 Page.html">PS4</a>
+      <a href="Games PSVita Page.html">PSVita</a>
+      <a href="Games Xbox One Page.html">Xbox ONE</a>
+      <a href="Games 3DSXL Page.html">New 3DSXL</a>
+      <a href="Games Switch Page.html">Switch</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn">Console Brands
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="Consoles Brands Page.html">Show All</a>
+      <a href="Console Brands PlayStation Page.html">Sony</a>
+      <a href="Console Brands Microsoft XBOX Page.html">Microsoft</a>
+      <a href="Console Brands Nintendo Page.html">Nintendo</a>
+    </div>
+  </div> 
+</div>
+  <div class="sidebar1">
+    <ul class="nav">
+      <li>Consoles Brands</li>
+      <li><a href="Console Brands PlayStation 3 Page.html">PS3</a></li>
+      <li><a href="Console Brands PlayStation 4 Page.html">PS4</a></li>
+      <li><a href="Console Brands PlayStation Vita Page.html">PSVita</a></li>
+      <li><a href="Console Brands Microsoft XBOX 360 Slim Black 4GB Unit Page.html">Xbox 360</a></li>
+      <li><a href="Console Brands Microsoft XBOX ONE Page.html">Xbox ONE</a></li>
+      <li><a href="Console Brands Nintendo New 3DSXL Page.html">New 3DSXL</a></li>
+      <li><a href="Console Brands Nintendo Switch Page.html">Switch</a></li>
+      <li>Games</li>
+      <li><a href="Games PS3 Page.html">PS3</a></li>
+      <li><a href="Games PS4 Page.html">PS4</a></li>
+      <li><a href="Games PSVita Page.html">PSVita</a></li>
+      <li><a href="Games Xbox One Page.html">Xbox ONE</a></li>
+      <li><a href="Games 3DSXL Page.html">3DSXL</a></li>
+      <li><a href="Games Switch Page.html">Switch</a></li>
+      <li>Accessories</li>
+      <li><a href="Accessories PS3 Page.html">PS3</a></li>
+      <li><a href="Accessories PS4 Page.html">PS4</a></li>
+      <li><a href="Accessories PSVita Page.html">PSVita</a></li>
+      <li><a href="Accessories Xbox 360 Page.html">Xbox 360</a></li>
+      <li><a href="Accessories Xbox ONE Page.html">Xbox ONE</a></li>
+      <li><a href="Accessories Nintendo New 3DSXL Page.html">New 3DSXL</a></li>
+      <li><a href="Accessories Nintendo Switch Page.html">Switch</a></li>
+      <li>Pre-Order</li>
+      <li><a href="Pre-Order PS4 Page.html">PS4</a></li>
+      <li><a href="Pre-Order Xbox One Page.html">Xbox ONE</a></li>
+      <li><a href="Pre-Order Switch Page.html">Switch</a></li>
+    </ul>
+  <!-- end .sidebar1 --></div>
+<div class="content">
+    <div id="CateIndicator"></div>
+    <h2>Nintendo New 3DSXL Black Pouch</h2>
+    <p><img src="Accessories Nintendo New 3DSXL Black Pouch.png" width="335" height="335" /></p>
+    <p>Description:</p>
+    <p>Officially licensed by Nintendo. Protect your newly invested Nintendo 3DS XL/LL system with this carrying pouch. The durable and hardened material on the outside and soft material on the inside will protect your Nintendo 3DS XL/LL from dirt and scratches. This case will hold the Nintendo 3DS XL system and has pockets for up to 3 Nintendo 3DS or DS game cards and 1 stylus.</p>
+    <p> <br />
+      <img src="Divider Blank.jpg" width="1201" height="38" /> 
+      <br />
+    </p>
+</div>
+<div class="footer">
+    <h1>USJ GAME TRADING</h1>
+    <p><img name="Shop" src="Client's shop.png" width="320" height="202" alt="" /> <img src="Shop information.png" width="1040" height="200" /></p></p>
+  <p>Copyright© 2018, USJGAMETRADING. All Rights Reserved.</p>
+  <!-- end .footer --></div>
+  <!-- end .container --></div>
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+</script>
+</body>
+</html>
